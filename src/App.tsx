@@ -1,40 +1,34 @@
 import { useState } from 'react'
-import { ThemeProvider } from 'styled-components'
-
-import Main from './components/Main'
-import ToggleTheme from './components/ui/ToggleTheme'
-import QuizProvider from './context/QuizProvider'
-import { GlobalStyles } from './styles/Global'
-import { themes } from './styles/Theme'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
 function App() {
-  const [currentTheme, setCurrentTheme] = useState(() => {
-    const savedTheme = localStorage.getItem('theme')
-    return savedTheme || 'light'
-  })
-
-  const toggleTheme = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { checked } = e.target
-    setCurrentTheme(checked ? 'dark' : 'light')
-    localStorage.setItem('theme', checked ? 'dark' : 'light')
-  }
-
-  const theme = currentTheme === 'light' ? themes.light : themes.dark
+  const [count, setCount] = useState(0)
 
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <QuizProvider>
-        <ToggleTheme
-          onChange={toggleTheme}
-          currentTheme={currentTheme}
-          checked={currentTheme === 'dark'}
-          id="toggleTheme"
-          value="theme"
-        />
-        <Main />
-      </QuizProvider>
-    </ThemeProvider>
+    <>
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
   )
 }
 
