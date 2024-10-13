@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import './index.css'
 import Home from './routes/root.tsx';
+import Navigation from './components/Navigation.tsx';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+    <Navigation isMobile/>
     <RouterProvider router={router} />
   </StrictMode>,
 )
