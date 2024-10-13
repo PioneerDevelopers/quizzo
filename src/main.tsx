@@ -9,6 +9,7 @@ import './index.css'
 import Home from './routes/root.tsx';
 import Navigation from './components/Navigation.tsx';
 
+// TODO: Add other routes, pull out router into its own file
 const router = createBrowserRouter([
   {
     path: "/",
